@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Hind_Siliguri } from "next/font/google"
 import "./globals.css"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["bengali"],
@@ -25,6 +26,7 @@ export default function RootLayout({
         className={`${hindSiliguri.className} min-h-full flex flex-col antialiased`}
       >
         {children}
+        <SpeedInsights />
       </body>
     </html>
   )
