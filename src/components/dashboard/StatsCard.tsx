@@ -1,15 +1,19 @@
+import { Card, CardContent } from "@/components/ui/card"
+
 interface StatsCardProps {
-  label: string;
-  value: string;
-  subLabel?: string;
+  label: string
+  value: string
+  subLabel?: string
 }
 
 export default function StatsCard({ label, value, subLabel }: StatsCardProps) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-      <p className="text-sm text-gray-500 mb-1">{label}</p>
-      <p className="text-2xl font-bold text-brand-primary">{value}</p>
-      {subLabel && <p className="text-xs text-gray-400 mt-1">{subLabel}</p>}
-    </div>
-  );
+    <Card className="rounded-xl border border-[#e2e2e2] shadow-[rgba(0,0,0,0.12)_0px_4px_16px_0px]">
+      <CardContent className="p-6">
+        <p className="text-sm text-[#5e5e5e] mb-2">{label}</p>
+        <p className="text-2xl font-bold text-black">{value}</p>
+        {subLabel && <p className="text-xs text-[#afafaf] mt-1">{subLabel}</p>}
+      </CardContent>
+    </Card>
+  )
 }

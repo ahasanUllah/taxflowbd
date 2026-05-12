@@ -1,10 +1,16 @@
 import type { Metadata } from "next"
-import { Hind_Siliguri } from "next/font/google"
+import { Noto_Sans_Bengali, Inter, Roboto } from "next/font/google"
 import "./globals.css"
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { cn } from "@/lib/utils";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
-const hindSiliguri = Hind_Siliguri({
-  subsets: ["bengali"],
+const robotoHeading = Roboto({subsets:['latin'],variable:'--font-heading'});
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+
+const notoSansBengali = Noto_Sans_Bengali({
+  subsets: ["bengali", "latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-bangla",
   display: "swap",
@@ -13,6 +19,9 @@ const hindSiliguri = Hind_Siliguri({
 export const metadata: Metadata = {
   title: "TaxFlowBD",
   description: "বাংলাদেশের জন্য এআই-চালিত আয়কর ফাইলিং প্ল্যাটফর্ম",
+  icons: {
+    icon: "/favicon.svg",
+  },
 }
 
 export default function RootLayout({
@@ -21,11 +30,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="bn" className={`${hindSiliguri.variable} h-full`}>
+    <html lang="bn" className={cn("h-full", notoSansBengali.variable, "font-sans", inter.variable, robotoHeading.variable)}>
       <body
-        className={`${hindSiliguri.className} min-h-full flex flex-col antialiased`}
+        className={`${notoSansBengali.className} min-h-full flex flex-col antialiased`}
       >
-        {children}
+        <TooltipProvider>
+          {children}
+        </TooltipProvider>
         <SpeedInsights />
       </body>
     </html>

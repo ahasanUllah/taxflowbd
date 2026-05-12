@@ -29,6 +29,7 @@ export default async function DashboardPage() {
     .lean()
 
   const profileCompleteness = (profile as any)?.profileCompleteness ?? 0
+  const firstName = (session?.user.name ?? "ব্যবহারকারী").split(" ")[0]
 
   const returnStatus = latestReturnDoc
     ? (statusMap[(latestReturnDoc as any).status as keyof typeof statusMap] ?? "অজানা")
@@ -42,15 +43,36 @@ export default async function DashboardPage() {
     : null
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="p-6 md:p-8 space-y-8 max-w-5xl mx-auto">
+      {/* Greeting */}
+      <div>
+        <h2 className="text-2xl font-bold text-black">
+          স্বাগতম, {firstName}
+        </h2>
+        <p className="text-sm text-[#5e5e5e] mt-1">
+          মূল্যায়ন বছর ২০২৫-২৬ এর জন্য আপনার কর রিটার্ন প্রস্তুত করুন।
+        </p>
+      </div>
+
+      {/* Stats row */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <StatsCard label="প্রোফাইল সম্পন্ন" value={`${profileCompleteness}%`} />
         <StatsCard label="রিটার্নের অবস্থা" value={returnStatus} />
         <StatsCard label="মূল্যায়ন বছর" value="AY 2025-26" />
       </div>
+
+      {/* Profile alert */}
       <ProfileAlert profileCompleteness={profileCompleteness} />
-      <QuickActions />
-      <RecentActivity latestReturn={latestReturn} />
+
+      {/* Main two-column layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2">
+          <QuickActions />
+        </div>
+        <div>
+          <RecentActivity latestReturn={latestReturn} />
+        </div>
+      </div>
     </div>
   )
 }
