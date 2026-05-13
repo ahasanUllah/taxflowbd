@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import { Logo } from "@/components/shared/Logo"
 import { signUp, useSession } from "@/lib/auth-client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -71,7 +72,7 @@ export default function RegisterPage() {
     <div className="min-h-screen flex">
       {/* Left: Black branding panel */}
       <div className="hidden lg:flex lg:w-5/12 flex-col justify-between bg-black px-12 py-14 xl:px-16">
-        <span className="text-white text-xl font-bold tracking-tight">TaxFlowBD</span>
+        <Logo variant="compact" className="text-white" />
 
         <div>
           <h1 className="text-4xl font-bold text-white leading-tight mb-5">
@@ -102,8 +103,8 @@ export default function RegisterPage() {
       {/* Right: Form panel */}
       <div className="flex-1 flex items-center justify-center bg-[#f3f3f3] px-6 py-12">
         <div className="w-full max-w-md">
-          <div className="lg:hidden mb-8 text-center">
-            <span className="text-2xl font-bold text-black">TaxFlowBD</span>
+          <div className="lg:hidden mb-8 flex justify-start">
+            <Logo variant="compact" className="text-black" />
           </div>
 
           <div className="bg-white rounded-xl p-8 shadow-[rgba(0,0,0,0.16)_0px_4px_16px_0px]">

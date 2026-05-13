@@ -14,7 +14,7 @@ function LogoCompact({ className }: { className?: string }) {
       height="36"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="TaxFlowBD"
-      className={className}
+      className={`block ${className ?? ""}`}
     >
       {/* left accent bar */}
       <rect x="0" y="4" width="5" height="36" rx="2.5" fill="currentColor" />
@@ -76,7 +76,7 @@ function LogoIcon({ className }: { className?: string }) {
       height="28"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="TaxFlowBD"
-      className={className}
+      className={`block ${className ?? ""}`}
     >
       <rect x="0" y="2" width="4" height="32" rx="2" fill="currentColor" />
       <text
